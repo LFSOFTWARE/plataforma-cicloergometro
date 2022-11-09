@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Prontuario } from 'src/prontuario/entities/prontuario.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class VariaveisBiologica {
@@ -16,4 +17,10 @@ export class VariaveisBiologica {
 
   @Column()
   oxigenacao: number;
+
+  @OneToMany(
+    () => Prontuario,
+    (prontuario) => prontuario.codVariaveisBiologicasFK,
+  )
+  prontuario: Prontuario;
 }

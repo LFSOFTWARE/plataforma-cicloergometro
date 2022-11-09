@@ -1,9 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { CreateCidDto } from './dto/create-cid.dto';
 import { UpdateCidDto } from './dto/update-cid.dto';
+import { Cid } from './entities/cid.entity';
 
 @Injectable()
 export class CidService {
+  constructor(
+    @Inject('CID_REPOSITORY')
+    private usuarioRepository: Repository<Cid>,
+  ) {}
   create(createCidDto: CreateCidDto) {
     return 'This action adds a new cid';
   }
