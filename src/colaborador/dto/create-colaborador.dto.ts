@@ -1,1 +1,4 @@
-export class CreateColaboradorDto {}
+export class CreateColaboradorDto {
+  registroProfissional: string;
+  codUsuarioFK: number;
+}

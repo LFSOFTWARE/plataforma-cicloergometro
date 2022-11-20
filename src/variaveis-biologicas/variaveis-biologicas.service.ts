@@ -1,7 +1,7 @@
+import { Prontuario } from 'src/prontuario/entities/prontuario.entity';
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateVariaveisBiologicaDto } from './dto/create-variaveis-biologica.dto';
-import { UpdateVariaveisBiologicaDto } from './dto/update-variaveis-biologica.dto';
 import { VariaveisBiologica } from './entities/variaveis-biologica.entity';
 
 @Injectable()
@@ -10,23 +10,15 @@ export class VariaveisBiologicasService {
     @Inject('VARIAVEIS_REPOSITORY')
     private variaveisBiologicaRepository: Repository<VariaveisBiologica>,
   ) {}
-  create(createVariaveisBiologicaDto: CreateVariaveisBiologicaDto) {
-    return 'This action adds a new variaveisBiologica';
+  async create(createVariaveisBiologicaDto: CreateVariaveisBiologicaDto) {
+    return this.variaveisBiologicaRepository.save(createVariaveisBiologicaDto);
   }
 
-  findAll() {
-    return `This action returns all variaveisBiologicas`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} variaveisBiologica`;
-  }
-
-  update(id: number, updateVariaveisBiologicaDto: UpdateVariaveisBiologicaDto) {
-    return `This action updates a #${id} variaveisBiologica`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} variaveisBiologica`;
+  findAllById(prontuario: Prontuario) {
+    return this.variaveisBiologicaRepository.find({
+      where: {
+        prontuario: prontuario,
+      },
+    });
   }
 }

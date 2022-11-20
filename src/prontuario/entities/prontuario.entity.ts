@@ -1,5 +1,5 @@
 import { VariaveisBiologica } from 'src/variaveis-biologicas/entities/variaveis-biologica.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Prontuario {
@@ -9,7 +9,7 @@ export class Prontuario {
   @Column()
   descricao: string;
 
-  @ManyToOne(() => VariaveisBiologica, (variavel) => variavel.prontuario)
+  @OneToOne(() => VariaveisBiologica, (variavel) => variavel.prontuario)
   codVariaveisBiologicasFK: VariaveisBiologica[];
 
   @Column()

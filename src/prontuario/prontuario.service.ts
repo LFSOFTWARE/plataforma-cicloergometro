@@ -1,7 +1,6 @@
 import { Repository } from 'typeorm';
 import { Injectable, Inject } from '@nestjs/common';
 import { CreateProntuarioDto } from './dto/create-prontuario.dto';
-import { UpdateProntuarioDto } from './dto/update-prontuario.dto';
 import { Prontuario } from './entities/prontuario.entity';
 
 @Injectable()
@@ -20,13 +19,5 @@ export class ProntuarioService {
 
   findOne(id: number) {
     return `This action returns a #${id} prontuario`;
-  }
-
-  update(id: number, updateProntuarioDto: UpdateProntuarioDto) {
-    return `This action updates a #${id} prontuario`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} prontuario`;
   }
 }

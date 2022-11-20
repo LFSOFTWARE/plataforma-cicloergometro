@@ -1,15 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ProntuarioService } from './prontuario.service';
 import { CreateProntuarioDto } from './dto/create-prontuario.dto';
-import { UpdateProntuarioDto } from './dto/update-prontuario.dto';
 
 @Controller('prontuario')
 export class ProntuarioController {
@@ -28,18 +19,5 @@ export class ProntuarioController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.prontuarioService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateProntuarioDto: UpdateProntuarioDto,
-  ) {
-    return this.prontuarioService.update(+id, updateProntuarioDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.prontuarioService.remove(+id);
   }
 }
