@@ -9,15 +9,17 @@ export class ProntuarioService {
     @Inject('PRONTUARIO_REPOSITORY')
     private prontuarioRepository: Repository<Prontuario>,
   ) {}
-  create(createProntuarioDto: CreateProntuarioDto) {
-    return 'This action adds a new prontuario';
+  async create(createProntuarioDto: CreateProntuarioDto) {
+    return this.prontuarioRepository.save(createProntuarioDto);
   }
 
   findAll() {
-    return `This action returns all prontuario`;
+    return this.prontuarioRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} prontuario`;
+    return this.prontuarioRepository.find({
+      where: { id: id },
+    });
   }
 }

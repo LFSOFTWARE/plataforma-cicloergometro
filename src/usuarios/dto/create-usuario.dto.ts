@@ -5,4 +5,5 @@ export class CreateUsuarioDto {
   cpf: string;
   status: number;
   registroProfissional: string;
+  born: string;
 }

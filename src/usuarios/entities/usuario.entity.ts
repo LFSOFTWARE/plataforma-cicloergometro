@@ -16,7 +16,8 @@ export class Usuario {
 
   @Column()
   cpf: string;
-
+  @Column()
+  born: string;
   // 0 = paciente 1 = recepcionionista 2 = fisioterapeuta
   @Column()
   status: number;
